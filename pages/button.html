@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>按钮 - 英博云UI设计规范</title>
+    <link rel="stylesheet" href="../styles/common.css">
+    <link rel="stylesheet" href="../styles/button.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="logo"><a href="../index.html">英博云UI设计规范</a></div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">组件</a></li>
+                <li><a href="#">指南</a></li>
+                <li><a href="#">资源</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="section">
+                <h3>基础</h3>
+                <ul>
+                    <li><a href="colors.html" class="menu-item">
+                        <span class="icon">🎨</span>
+                        色彩
+                    </a></li>
+                    <li><a href="typography.html" class="menu-item">
+                        <span class="icon">✍️</span>
+                        文字
+                    </a></li>
+                    <li><a href="spacing.html" class="menu-item">
+                        <span class="icon">↔️</span>
+                        间距
+                    </a></li>
+                    <li><a href="radius.html" class="menu-item">
+                        <span class="icon">⚪</span>
+                        圆角
+                    </a></li>
+                </ul>
+            </div>
+            <div class="section">
+                <h3>组件</h3>
+                <ul>
+                    <li><a href="button.html" class="menu-item active">
+                        <span class="icon">⚡</span>
+                        按钮
+                    </a></li>
+                </ul>
+            </div>
+        </aside>
+        <main class="content">
+            <h1>按钮</h1>
+            <p class="description">按钮用于开始一个即时操作。</p>
+            
+            <section class="content-section">
+                <h2>基础按钮</h2>
+                <div class="button-table">
+                    <div class="table-header">
+                        <div class="col">中文名</div>
+                        <div class="col">类名</div>
+                        <div class="col">按钮</div>
+                        <div class="col">复制</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="col">主要按钮</div>
+                        <div class="col">.btn-primary</div>
+                        <div class="col">
+                            <button class="btn-primary">主要按钮</button>
+                        </div>
+                        <div class="col">
+                            <button class="copy-btn" data-clipboard-text=".btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.btn-primary:hover {
+    background-color: #40a9ff;
+}">
+                                <span class="icon">📋</span>
+                                复制代码
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-row">
+                        <div class="col">次要按钮</div>
+                        <div class="col">.btn-secondary</div>
+                        <div class="col">
+                            <button class="btn-secondary">次要按钮</button>
+                        </div>
+                        <div class="col">
+                            <button class="copy-btn" data-clipboard-text=".btn-secondary {
+    background-color: white;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.btn-secondary:hover {
+    background-color: #f0f5ff;
+}">
+                                <span class="icon">📋</span>
+                                复制代码
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-row">
+                        <div class="col">文本按钮</div>
+                        <div class="col">.btn-text</div>
+                        <div class="col">
+                            <button class="btn-text">文本按钮</button>
+                        </div>
+                        <div class="col">
+                            <button class="copy-btn" data-clipboard-text=".btn-text {
+    background: none;
+    color: var(--primary-color);
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+.btn-text:hover {
+    opacity: 0.8;
+}">
+                                <span class="icon">📋</span>
+                                复制代码
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-row">
+                        <div class="col">危险按钮</div>
+                        <div class="col">.btn-danger</div>
+                        <div class="col">
+                            <button class="btn-danger">危险按钮</button>
+                        </div>
+                        <div class="col">
+                            <button class="copy-btn" data-clipboard-text=".btn-danger {
+    background-color: #ff4d4f;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.btn-danger:hover {
+    background-color: #ff7875;
+}">
+                                <span class="icon">📋</span>
+                                复制代码
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <div class="toast" id="toast">已复制到剪贴板</div>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+    <script>
+        // 初始化 ClipboardJS
+        const clipboard = new ClipboardJS('.copy-btn');
+        const toast = document.getElementById('toast');
+        
+        // 复制成功回调
+        clipboard.on('success', function(e) {
+            // 显示提示
+            toast.classList.add('show');
+            
+            // 3秒后隐藏提示
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+            
+            e.clearSelection();
+        });
+    </script>
+</body>
+</html> 
